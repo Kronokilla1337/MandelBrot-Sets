@@ -39,12 +39,12 @@ public class Explorer : MonoBehaviour
     }
     private void HandleInputs()
     {
-        if (Input.GetKey(KeyCode.KeypadPlus))
+        if (Input.GetKey(KeyCode.K))
         {
             scale *= 0.99f;
         }
 
-        if (Input.GetKey(KeyCode.KeypadMinus))
+        if (Input.GetKey(KeyCode.L))
         {
             scale *= 1.01f;
         }
