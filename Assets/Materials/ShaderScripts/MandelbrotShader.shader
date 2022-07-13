@@ -83,9 +83,9 @@ Shader "Explorer/MandelbrotShader"
                 fracIter = log2(log(dist) / log(r)); //double exponential interpolation
 
                 iter -= fracIter;
-                float m = sqrt(iter / _MaxIter);
-                float4 col = sin(float4(.3, .45, .65, 1) * m*20)*0.5 + 0.5;
-                col = tex2D(_MainTex, float2(m*_Repeat+_Time.y*_Speed, _Color));
+                float m = sqrt(iter / _MaxIter); //0.0 - 1.0
+                //_Color = m*_Repeat 
+                float4 col = tex2D(_MainTex, float2(m * _Repeat + _Time.y * _Speed, _Color));
                 return col;
             }
             ENDCG

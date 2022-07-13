@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Explorer_MandelbrotShader
-  m_Shader: {fileID: 4800000, guid: 1d28804276ae3c1429190f59cef2c420, type: 3}
+  m_Name: JuliaTransparent
+  m_Shader: {fileID: 4800000, guid: 5b69d70ce340df94891fc1eb7682b8f5, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -21,17 +21,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d966f82aa1ac7a9408c61eb5df7ac18f, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Angle: 0
-    - _Color: 0.669
-    - _MaxIter: 312
-    - _Power: 3
-    - _Repeat: 1
-    - _Speed: -0.1
+    - _MaxIter: 255
     m_Colors:
     - _Area: {r: -5.666629, g: -3.692022, b: 13.255875, a: 7.459896}
+    - _Seed: {r: 0.009675741, g: 0.6342937, b: 0, a: 0}
   m_BuildTextureStacks: []

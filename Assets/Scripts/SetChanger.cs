@@ -12,17 +12,6 @@ public class SetChanger : MonoBehaviour
     [SerializeField]RawImage[] setImage;
     KeyCode currentKey;
     int lastImage;
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
 
     void ChangeRawImage(int setNum)
     {
@@ -42,10 +31,10 @@ public class SetChanger : MonoBehaviour
         if (e.isKey)
         {
             currentKey = e.keyCode;
-            int a = (int)currentKey-49;
-            if(a >= 0&&a<54)
+            int a = (int)currentKey-48;
+            if(a > 0&&a<setImage.Length+1)
             {
-                Debug.Log(a);
+                Debug.Log(--a);
                 ChangeRawImage(a);
             }
         }
