@@ -27,11 +27,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _Angle: 0
-    - _Color: 0.175
+    - _Color: 0.622
     - _MaxIter: 255
     - _Repeat: 3
-    - _Speed: 0.5
+    - _Speed: -0.3
     - _Symmetry: 0
     m_Colors:
-    - _Area: {r: 0, g: 0, b: 10, a: 2.8125}
+    - _Area: {r: 0, g: 0, b: 10, a: 5.61674}
   m_BuildTextureStacks: []

@@ -30,6 +30,6 @@ Material:
     - _Color: 0.5
     - _MaxIter: 255
     m_Colors:
-    - _Area: {r: -1, g: 0, b: 10, a: 2.8125}
+    - _Area: {r: -1, g: 0, b: 10, a: 5.627615}
     - _RetCol: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
