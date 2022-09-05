@@ -6,6 +6,7 @@ Shader "Explorer/PracticeShader"
         _Area("Area", vector) = (0,0,4,4)
         _Angle("Angle", range(3.1415, -3.1415)) = 0
         _MaxIter("MaxIterations", float) = 255
+        _Color("Color", float) = 0.5
     }
     SubShader
     {
@@ -42,12 +43,12 @@ Shader "Explorer/PracticeShader"
 
             float4 _Area;
             sampler2D _MainTex;
-            float _Angle, _MaxIter;
+            float _Angle, _MaxIter, _Color;
 
             float2 rot(float2 p, float2 pivot, float angle)
             {
-                float s = sin(angle);
-                float c = cos(angle);
+                float s = sin(_Time.y);
+                float c = cos(_Time.y);
 
                 p -= pivot;
                 p = float2(p.x * c - p.y * s, p.x * s + p.y * c);
@@ -57,9 +58,9 @@ Shader "Explorer/PracticeShader"
 
             fixed4 frag(v2f i) : SV_Target
             {
-                float2 c = _Area.xy+( i.uv)*_Area.zw; 
+                float2 c = _Area.xy + ( i.uv-0.5) * _Area.zw; 
                 c = rot(c, _Area.xy, _Angle);
-                float2 z ;
+                float2 z;
                 float iter;
 
                 for (iter = 0; iter < _MaxIter; iter++)

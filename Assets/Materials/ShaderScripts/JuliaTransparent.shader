@@ -6,6 +6,9 @@ Shader "Unlit/JuliaTransparent"
         _Area("Area", vector) = (1,1,4,4)
         _Seed("Seed", vector) = (1,1,0,0)
         _MaxIter("Max Iterations", float) = 255
+        _Color("Color", float) = 0.5
+        _Repeat("Repeat", float) = 1
+        _Speed("Speed", float) = 1
     }
     SubShader
     {
@@ -53,13 +56,15 @@ Shader "Unlit/JuliaTransparent"
 
             float2 _Seed;
             float4 _Area;
-            float _MaxIter;
+            float _Angle, _MaxIter, _Color, _Repeat, _Speed;
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float2 z = _Area.xy + (i.uv) * _Area.zw;
+                float2 z = _Area.xy + (i.uv - 0.5) * _Area.zw;
                 float2 c = _Seed;
                 float iter;
+                float r = 20; //escape radius
+                float r2 = r * r;
 
                 for (iter = 0; iter < _MaxIter; iter++)
                 {
@@ -70,8 +75,14 @@ Shader "Unlit/JuliaTransparent"
                     }
                 }
                 if (iter >= _MaxIter) return 0;
-                float m = (iter / _MaxIter);
-                float4 col = sin(float4(.21, .39, .76, 0.3) * m * 20);
+                float dist = length(z); //distance from origin
+                float fracIter = (dist - r) / (r2 - r); //linear interpolation
+                fracIter = log2(log(dist) / log(r)); //double exponential interpolation
+
+                iter -= fracIter;
+                float m = sqrt(iter / _MaxIter); //0.0 - 1.0
+                //_Color = m*_Repeat 
+                float4 col = tex2D(_MainTex, float2(m * _Repeat + _Time.y * _Speed, _Color));
                 return col;
             }
             ENDCG

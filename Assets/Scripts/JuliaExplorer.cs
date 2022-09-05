@@ -19,7 +19,7 @@ public class JuliaExplorer : MonoBehaviour
     private void Start()
     {
         //pos = new Vector2(-1f, 0);
-        scale = 2f;
+        scale = 10f;
     }
     void Update()
     {
